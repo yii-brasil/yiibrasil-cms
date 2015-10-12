@@ -1,0 +1,35 @@
+
+Definição do Projeto:
+Home (CMS)
+  - Noticias
+  - Banner Rotativo
+  - Vídeos
+About (CMS)
+Usuários 
+Fale Conosco
+
+
+Banco de Dados (MySQL):
+  - Almir
+  - Cálcio
+
+
+Front end:
+   - Germano
+   - 
+
+   
+Git:
+   - Alison
+   - 
+   
+Prazos:
+  - Criação do projeto (Já no )
+  - Banco schema (18/9/2015)
+  - CRUD Usuários + Sistema de login simples (Almir)
+  - CRUD Banner + Exibição na Home (Cálcio)
+  - CRUD Noticias + Exibição na Home (A definir)
+  - CRUD Vídeos + Exibição na Home (Germano)
+  - CRUD About + Página About (A definir)
+  - Fale Conosco + Front end (A definir)
+  
