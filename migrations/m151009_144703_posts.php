@@ -25,6 +25,7 @@ class m151009_144703_posts extends Migration
             'created_at' => $this->datetime()->notNull(),
             'updated_at' => $this->datetime()->notNull(),
         ]);
+
         $this->addForeignKey('fk_posts_autor', 'posts', 'id_autor', 'users', 'id');
         $this->addForeignKey('fk_posts_categoria', 'posts', 'id_categoria', 'category', 'id');
     }

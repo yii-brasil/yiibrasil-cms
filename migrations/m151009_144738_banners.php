@@ -21,7 +21,6 @@ class m151009_144738_banners extends Migration
             'created_at' => $this->datetime()->notNull(),
             'updated_at' => $this->datetime()->notNull(),
         ], $tableOptions);
-    }
 
     public function down()
     {
