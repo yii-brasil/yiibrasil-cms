@@ -22,9 +22,6 @@ Para manter o código organizado e não quebrar o que já está pronto, crie um 
 Entre em contato com o grupo pelo nosso grupo no G+ https://plus.google.com/u/0/communities/116052169983764978251 ou no nosso chat se já estiver na lista. Informe qual item (que esteja livre) deseja participar.
 
 Se for uma melhoria em algo implementado, faça um pull request que validaremos o que foi desenvolvido e caso seja aprovado, liberaremos o pull request.
-<<<<<<< HEAD
 
 #Clone
-Após clonar o projeto rode o comando composer install para instalar as bibliotecas do framework
-=======
->>>>>>> 571113ab8dfedc2797eeb963dcf1bde69ad03706
+Após clonar o projeto rode o comando composer install para instalar as bibliotecas do framework.
