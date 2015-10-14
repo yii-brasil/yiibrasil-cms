@@ -16,6 +16,15 @@ $config = [
             'thousandSeparator' => '.',
             'currencyCode' => 'R$',
         ],
+        /*
+         * Antes de inserir os dados no banco, formatá-los para se tornarem compatíveis com determinados tipos de campos.
+         */
+        'formatterDB' => [
+            'class' => 'yii\i18n\Formatter',
+            'dateFormat' => 'php:Y-m-d',
+            'datetimeFormat' => 'php:Y-m-d H:i:s',
+            'timeFormat' => 'php:H:i:s',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'auo9mPQr4YFV-YTdDEhd9EPT8QYufhn6',
