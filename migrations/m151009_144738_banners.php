@@ -17,12 +17,12 @@ class m151009_144738_banners extends Migration
             'id' => $this->primaryKey(),
             'url_imagem' => $this->string(200)->notNull(),
             'descricao' => $this->string(140),
-            'status' => $this->string(7)->notNull()->defaultValue('ativo'),
+            'status' => "ENUM('ativo', 'inativo') NOT NULL DEFAULT 'ativo'",
             'created_at' => $this->datetime()->notNull(),
             'updated_at' => $this->datetime()->notNull(),
         ], $tableOptions);
     }
-    
+
     public function down()
     {
         echo "m151009_144738_banners cannot be reverted.\n";

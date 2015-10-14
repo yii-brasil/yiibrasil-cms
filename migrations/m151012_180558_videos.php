@@ -19,7 +19,7 @@ class m151012_180558_videos extends Migration
             'titulo' => $this->string(200),
             'descricao' => $this->string(255),
             'url' => $this->string(255),
-            'status' => $this->string(7)->notNull()->defaultValue('ativo'),
+            'status' => "ENUM('ativo', 'inativo') NOT NULL DEFAULT 'ativo'",
             'created_at' => $this->datetime()->notNull(),
             'updated_at' => $this->datetime()->notNull(),
         ], $tableOptions);

@@ -20,7 +20,7 @@ class m151009_144703_posts extends Migration
             'titulo' => $this->string(200)->notNull(),
             'noticia' => $this->text()->notNull(),
             'tags' => $this->string(250),
-            'status' => $this->string(7)->notNull()->defaultValue('ativo'),
+            'status' => "ENUM('ativo', 'inativo') NOT NULL DEFAULT 'ativo'",
             'visualizacoes' => $this->smallInteger()->defaultValue(0),
             'created_at' => $this->datetime()->notNull(),
             'updated_at' => $this->datetime()->notNull(),

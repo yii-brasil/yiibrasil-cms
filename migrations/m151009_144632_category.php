@@ -16,7 +16,7 @@ class m151009_144632_category extends Migration
         $this->createTable('category', [
             'id' => $this->primaryKey(),
             'descricao' => $this->string(100)->notNull(),
-            'status' => $this->string(7)->notNull()->defaultValue('ativo'),
+            'status' => "ENUM('ativo', 'inativo') NOT NULL DEFAULT 'ativo'",
             'created_at' => $this->datetime()->notNull(),
             'updated_at' => $this->datetime()->notNull(),
         ]);
