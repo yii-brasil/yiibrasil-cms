@@ -9,9 +9,10 @@ $config = [
     'language' => 'pt-br',
     'components' => [
         'formatter' => [
-            'dateFormat' => 'dd/MM/yyyy',
-            'datetimeFormat' => 'dd/MM/yyy H:i',
-            'timeFormat' => 'H:i',
+            'class' => 'yii\i18n\Formatter',
+            'dateFormat' => 'php:d/m/Y',
+            'datetimeFormat' => 'php:d/m/Y H:i:s',
+            'timeFormat' => 'php:H:i:s',
             'decimalSeparator' => ',',
             'thousandSeparator' => '.',
             'currencyCode' => 'R$',
@@ -24,6 +25,8 @@ $config = [
             'dateFormat' => 'php:Y-m-d',
             'datetimeFormat' => 'php:Y-m-d H:i:s',
             'timeFormat' => 'php:H:i:s',
+            'decimalSeparator' => '.',
+            'thousandSeparator' => ',',
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -65,11 +68,13 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
+        'allowedIPs' => ['172.20.50.126', '172.20.50.4'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+        'allowedIPs' => ['172.20.50.126', '172.20.50.4'],
     ];
 }
 
