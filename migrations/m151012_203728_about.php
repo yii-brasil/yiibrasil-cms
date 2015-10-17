@@ -17,8 +17,8 @@ class m151012_203728_about extends Migration
             'id' => $this->primaryKey(),
             'conteudo' => $this->text()->notNull(),
             'status' => "ENUM('ativo', 'inativo') NOT NULL DEFAULT 'ativo'",
-            'created_at' => $this->datetime()->notNull(),
-            'updated_at' => $this->datetime()->notNull(),
+            'created_at' => $this->integer()->notNull(),
+            'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
     }
 
