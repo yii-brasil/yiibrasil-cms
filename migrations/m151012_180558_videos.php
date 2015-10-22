@@ -20,8 +20,8 @@ class m151012_180558_videos extends Migration
             'descricao' => $this->string(255),
             'url' => $this->string(255),
             'status' => "ENUM('ativo', 'inativo') NOT NULL DEFAULT 'ativo'",
-            'created_at' => $this->datetime()->notNull(),
-            'updated_at' => $this->datetime()->notNull(),
+            'created_at' => $this->integer()->notNull(),
+            'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
 
         $this->addForeignKey('fk_videos_categoria', 'videos', 'id_categoria', 'category', 'id');
@@ -29,19 +29,6 @@ class m151012_180558_videos extends Migration
 
     public function down()
     {
-        echo "m151012_180558_videos cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('videos');
     }
-
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }

@@ -22,8 +22,8 @@ class m151009_144703_posts extends Migration
             'tags' => $this->string(250),
             'status' => "ENUM('ativo', 'inativo') NOT NULL DEFAULT 'ativo'",
             'visualizacoes' => $this->smallInteger()->defaultValue(0),
-            'created_at' => $this->datetime()->notNull(),
-            'updated_at' => $this->datetime()->notNull(),
+            'created_at' => $this->integer()->notNull(),
+            'updated_at' => $this->integer()->notNull(),
         ]);
 
         $this->addForeignKey('fk_posts_autor', 'posts', 'id_autor', 'users', 'id');
@@ -32,19 +32,6 @@ class m151009_144703_posts extends Migration
 
     public function down()
     {
-        echo "m151009_144703_posts cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('posts');
     }
-
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }

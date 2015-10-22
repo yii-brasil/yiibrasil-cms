@@ -24,19 +24,6 @@ class m151012_203728_about extends Migration
 
     public function down()
     {
-        echo "m151012_203728_about cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('about');
     }
-
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }

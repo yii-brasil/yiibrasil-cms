@@ -17,26 +17,13 @@ class m151009_144632_category extends Migration
             'id' => $this->primaryKey(),
             'descricao' => $this->string(100)->notNull(),
             'status' => "ENUM('ativo', 'inativo') NOT NULL DEFAULT 'ativo'",
-            'created_at' => $this->datetime()->notNull(),
-            'updated_at' => $this->datetime()->notNull(),
+            'created_at' => $this->integer()->notNull(),
+            'updated_at' => $this->integer()->notNull(),
         ]);
     }
 
     public function down()
     {
-        echo "m151009_144632_category cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('category');
     }
-
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }

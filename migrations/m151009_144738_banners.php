@@ -18,26 +18,13 @@ class m151009_144738_banners extends Migration
             'url_imagem' => $this->string(200)->notNull(),
             'descricao' => $this->string(140),
             'status' => "ENUM('ativo', 'inativo') NOT NULL DEFAULT 'ativo'",
-            'created_at' => $this->datetime()->notNull(),
-            'updated_at' => $this->datetime()->notNull(),
+            'created_at' => $this->integer()->notNull(),
+            'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
     }
 
     public function down()
     {
-        echo "m151009_144738_banners cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('banners');
     }
-
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }
