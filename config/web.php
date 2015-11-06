@@ -71,6 +71,41 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
     ];
+
+    /*
+
+    ------------------------------
+    CONFIGURAÇÃO EXTRA DOS MODULES
+    ------------------------------
+
+    CONCEITO
+    - Isto serve apenas para caso você necessite de algumas configurações extras nos módulos em seu ambiente de
+    desenvolvimento.
+
+    PASSO A PASSO
+    - Crie um arquivo dentro do diretório "app/config" chamado "modules.php".
+    - Para funcionar é preciso retornar um array.
+
+    EXEMPLO DE CÓDIGO
+    <?php
+    return [
+        'module' => [
+            // Se STRING
+            'property' => 'value',
+            // Se ARRAY
+            'property' => ['value'],
+        ],
+    ];
+
+    */
+    if (file_exists(__DIR__ . '/modules.php')) {
+        $modules = require(__DIR__ . '/modules.php');
+        foreach ($modules as $module_key => $module) {
+            foreach ($module as $property_key => $property) {
+                $config['modules'][$module_key][$property_key] = $property;
+            }
+        }
+    }
 }
 
 return $config;
