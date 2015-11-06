@@ -4,9 +4,11 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Banners;
-use app\models\BannerSearch;
+use app\models\BannersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\BadRequestHttpException;
+use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
 
 /**
@@ -32,7 +34,7 @@ class BannerController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new BannerSearch();
+        $searchModel = new BannersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -62,8 +64,18 @@ class BannerController extends Controller
     {
         $model = new Banners();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            //Pega a instância do arquivo
+            $model->image_file = UploadedFile::getInstance($model, 'image_file');
+
+            //Salva o caminho no BD
+            if ($model->url_imagem = $model->uploadBanner()) {
+                $model->save();
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                throw new BadRequestHttpException('Não foi possível enviar o arquivo');
+            }
+
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -80,9 +92,20 @@ class BannerController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $currentImage = $model->url_imagem;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            //Pega a instância do arquivo
+            $model->image_file = UploadedFile::getInstance($model, 'image_file');
+
+            //Salva o caminho no BD
+            if ($model->url_imagem = $model->uploadBanner()) {
+                $model->save();
+                $model->deleteBanner($currentImage);
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                throw new BadRequestHttpException('Não foi possível enviar o arquivo');
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -98,8 +121,10 @@ class BannerController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->deleteBanner($model->url_imagem);
 
+        $this->findModel($id)->delete();
         return $this->redirect(['index']);
     }
 
@@ -115,7 +140,7 @@ class BannerController extends Controller
         if (($model = Banners::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Página solicitada não existe.');
+            throw new NotFoundHttpException('A página solicitada não existe.');
         }
     }
 }

@@ -18,4 +18,7 @@ $this->params['breadcrumbs'][] = 'Atualizar';
         'model' => $model,
     ]) ?>
 
+    <hr />
+    <h2>Vizualização do banner</h2>
+    <?= Html::img('@web/uploads/img/banners/' . $model->url_imagem, ['width'=>'600']) ?>
 </div>

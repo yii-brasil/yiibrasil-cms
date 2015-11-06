@@ -24,8 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            
-            'url_imagem:url',
+            [
+                'attribute' => 'url_imagem',
+                'format' => 'raw',
+                'value' => function($data) {
+                    $image = Yii::getAlias('@web/uploads/img/banners/') . $data->url_imagem;
+                    return Html::a($data->url_imagem, $image, ['title' => 'url_imagem', 'target' => '_new']);
+                }
+            ],
             'descricao',
             'status',
             'created_at:date',
