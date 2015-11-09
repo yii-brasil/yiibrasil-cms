@@ -19,6 +19,17 @@ class BannerController extends Controller
     public function behaviors()
     {
         return [
+            'access' =>
+            [
+                'class' => \yii\filters\AccessControl::className(),
+                'only' => ['create', 'delete', 'update', 'view', 'index'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

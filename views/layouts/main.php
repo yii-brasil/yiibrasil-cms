@@ -41,6 +41,12 @@ AppAsset::register($this);
             ['label' => 'Vídeos', 'url' => ['#']],
             ['label' => 'Sobre', 'url' => ['/site/about']],
             ['label' => 'Contato', 'url' => ['/site/contact']],
+            [
+                'label' => 'Administração do banner',
+                'url' => ['/banner/index'],
+                'visible' => !Yii::$app->user->isGuest,
+            ],
+
             Yii::$app->user->isGuest ?
                 ['label' => 'Login', 'url' => ['/site/login']] :
                 [
