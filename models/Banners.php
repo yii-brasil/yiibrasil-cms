@@ -20,6 +20,8 @@ use yii\db\ActiveRecord;
 class Banners extends ActiveRecord
 {
     public $image_file;
+    const STATUS_INACTIVE = 'Inativo';
+    const STATUS_ACTIVE = 'Ativo';
     /**
      * @inheritdoc
      */
@@ -81,5 +83,33 @@ class Banners extends ActiveRecord
         } else {
             return false;
         }
+    }
+
+    public function getBannerIsActive()
+    {
+        $banners = (new \yii\db\Query())
+            ->select(['url_imagem', 'descricao'])
+            ->from($this->tableName())
+            ->where(['status' => Banners::STATUS_ACTIVE])
+            ->orderBy('created_at DESC')
+            ->all();
+
+        return $banners;
+    }
+
+    public function buildBannerObject()
+    {
+        $banners = $this->getBannerIsActive();
+        $listaBanner = [];
+
+        foreach ($banners as $key => $banner) {
+            $listaBanner[$key] = [
+                'content' => '<img src="' . \Yii::getAlias('@web/uploads/img/banners/') .
+                    $banner['url_imagem'] . '" width="1140px" height="584px" />',
+                'caption' => '<h4>' . $banner['descricao'] . '</h4>',
+            ];
+        }
+
+        return $listaBanner;
     }
 }
