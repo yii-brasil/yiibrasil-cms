@@ -81,7 +81,6 @@ class BannerController extends Controller
 
             //Salva o caminho no BD
             if ($model->url_imagem = $model->uploadBanner()) {
-                $model->created_at = $model->updated_at = date('Y-m-d h:i:s');
 
                 if ($model->save()){
                     return $this->redirect(['view', 'id' => $model->id]);
@@ -114,7 +113,6 @@ class BannerController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             //Pega a instância do arquivo
             $model->image_file = UploadedFile::getInstance($model, 'image_file');
-            $model->updated_at = date('Y-m-d h:i:s');
 
             //Salva o caminho no BD e apaga a imagem antiga
             if ($model->uploadBanner()) {

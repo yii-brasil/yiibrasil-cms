@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 use yii\web\UploadedFile;
 use yii\helpers\FileHelper;
 use yii\db\ActiveRecord;
@@ -22,6 +23,17 @@ class Banners extends ActiveRecord
     public $image_file;
     const STATUS_INACTIVE = 'Inativo';
     const STATUS_ACTIVE = 'Ativo';
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+
     /**
      * @inheritdoc
      */
