@@ -5,16 +5,22 @@
 $this->title = 'YiiBrasil CMS';
 ?>
 <div class="site-index">
-
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
     <div class="body-content">
+        <?php
+        if (!empty($banners)) {
+            echo yii\bootstrap\Carousel::widget([
+                'items' => $banners,
+                'controls' => [
+                    '<span class="glyphicon glyphicon-chevron-left"></span>',
+                    '<span class="glyphicon glyphicon-chevron-right"></span>',
+                ],
+                'options' => [
+                    'class' => 'carousel slide',
+                    'data-interval' => 5000,
+                ],
+            ]);
+        }
+        ?>
 
         <div class="row">
             <div class="col-lg-6">
