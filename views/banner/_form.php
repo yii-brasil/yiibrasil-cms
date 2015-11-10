@@ -21,11 +21,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->dropDownList(['ativo' => 'Ativo',
         'inativo' => 'Inativo', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'created_at')->textInput(['value' => date('Y-m-d h:i:s')]) ?>
-
-    <?= $form->field($model, 'updated_at')->textInput(['value' => date('Y-m-d h:i:s')]) ?>
-
+    
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Gravar' : 'Atualizar',
             ['class' => $model->isNewRecord ? 'btn btn-success' :

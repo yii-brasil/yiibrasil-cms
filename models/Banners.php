@@ -36,7 +36,8 @@ class Banners extends ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'updated_at'], 'required'],
+            [['status'], 'required'],
+            [['image_file'], 'required', 'on' => 'insert'],
             [['image_file'], 'file'],
             [['status'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
@@ -64,13 +65,14 @@ class Banners extends ActiveRecord
     public function uploadBanner()
     {
         if ($this->validate()) {
-            //Cria o diretório se não existir
-            FileHelper::createDirectory('uploads/img/banners/');
+            if ($this->image_file != null) {
+                //Cria o diretório se não existir
+                FileHelper::createDirectory('uploads/img/banners/');
+                $file = explode('.', $this->image_file->name);
+                $this->image_file->saveAs(\Yii::getAlias('@webroot/uploads/img/banners/') . $file[0] . '-' . date('YmdHis') . '.' . $this->image_file->extension);
 
-            $file = explode('.', $this->image_file->name);
-            $this->image_file->saveAs(\Yii::getAlias('@webroot/uploads/img/banners/') . $file[0] . '-' . date('YmdHis') . '.' . $this->image_file->extension);
-
-            return $file[0] . '-' . date('YmdHis') . '.' . $this->image_file->extension;
+                return $file[0] . '-' . date('YmdHis') . '.' . $this->image_file->extension;
+            }
         } else {
             return false;
         }
