@@ -19,8 +19,8 @@ class m130524_201442_init extends Migration
             'senha' => $this->string(32)->notNull(),
             'email' => $this->string(150)->notNull(),
             'status' => "ENUM('ativo', 'inativo') NOT NULL DEFAULT 'ativo'",
-            'created_at' => $this->datetime()->notNull(),
-            'updated_at' => $this->datetime()->notNull(),
+            'created_at' => $this->integer()->notNull(),
+            'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
     }
 
