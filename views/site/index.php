@@ -8,7 +8,17 @@ $this->title = 'YiiBrasil CMS';
     <div class="body-content">
         <?php
         if (!empty($banners)) {
-            echo yii\bootstrap\Carousel::widget(['items' => $banners]);
+            echo yii\bootstrap\Carousel::widget([
+                'items' => $banners,
+                'controls' => [
+                    '<span class="glyphicon glyphicon-chevron-left"></span>',
+                    '<span class="glyphicon glyphicon-chevron-right"></span>',
+                ],
+                'options' => [
+                    'class' => 'carousel slide',
+                    'data-interval' => 5000,
+                ],
+            ]);
         }
         ?>
 
