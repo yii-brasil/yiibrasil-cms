@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\About;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -17,10 +18,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout', 'about-edit'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'about-edit'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -90,8 +91,55 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * Conteúdo da página Sobre.
+     *
+     * @return string
+     */
     public function actionAbout()
     {
-        return $this->render('about');
+        $id = 1;
+        $find = About::findOne($id);
+
+        if ($find) {
+            $model = $find;
+
+            return $this->render('about', [
+                'model' => $model,
+            ]);
+        } else {
+            return $this->render('about');
+        }
+    }
+
+    /**
+     * Edição do conteúdo da página Sobre.
+     *
+     * @return string|\yii\web\Response
+     */
+    public function actionAboutEdit()
+    {
+        $model = new About();
+
+        $id = 1;
+        $find = About::findOne($id);
+        if ($find) {
+            if (!$find->isNewRecord) {
+                $model = $find;
+                $model->conteudo = htmlspecialchars_decode($model->conteudo, ENT_QUOTES);
+            }
+        }
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id = $id;
+            $model->conteudo = htmlspecialchars($model->conteudo, ENT_QUOTES, 'UTF-8');
+            if ($model->save()) {
+                return $this->redirect(['about']);
+            }
+        }
+
+        return $this->render('about-edit', [
+            'model' => $model,
+        ]);
     }
 }
