@@ -11,7 +11,7 @@ Para manter o código organizado e não quebrar o que já está pronto, crie um 
 
   - CRUD Usuários + Sistema de login simples (Almir)
   - CRUD Banner + Exibição na Home (Cálcio)
-  - CRUD Noticias + Exibição na Home (A definir)
+  - CRUD Noticias + Exibição na Home (Armando)
   - CRUD Vídeos + Exibição na Home (Germano)
   - CRUD About + Página About (Emanuel)
   - Fale Conosco + Front end (A definir)
