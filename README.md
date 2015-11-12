@@ -2,7 +2,7 @@
 Projeto da comunidade Yii Brasil referente a utilização da versão Basic. Esse projeto deve ser usado para base de estudo e entendimento do funcionamento do Yii 2.
 
 # Participantes do projeto
-Almir, Cálcio, Germano e Emanuel
+Almir, Cálcio, Germano, Emanuel e Armando
 
 # Definição
 Cada participante, criará sua parte (definida abaixo) desde CRUD básico até a implementação para o usuário final (frontend).
@@ -11,7 +11,7 @@ Para manter o código organizado e não quebrar o que já está pronto, crie um 
 
   - CRUD Usuários + Sistema de login simples (Almir)
   - CRUD Banner + Exibição na Home (Cálcio)
-  - CRUD Noticias + Exibição na Home (A definir)
+  - CRUD Noticias + Exibição na Home (Armando)
   - CRUD Vídeos + Exibição na Home (Germano)
   - CRUD About + Página About (Emanuel)
   - Fale Conosco + Front end (A definir)
