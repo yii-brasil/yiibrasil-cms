@@ -26,43 +26,57 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
-    NavBar::begin([
-        'brandLabel' => 'YiiBrasil CMS',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Posts', 'url' => ['#']],
-            ['label' => 'Vídeos', 'url' => ['#']],
-            ['label' => 'Sobre', 'url' => ['/site/about']],
-            ['label' => 'Contato', 'url' => ['/site/contact']],
-            [
-                'label' => 'Administração do banner',
-                'url' => ['/banner/index'],
-                'visible' => !Yii::$app->user->isGuest,
+    NavBar::begin(
+        [
+            'brandLabel' => 'YiiBrasil CMS',
+            'brandUrl' => Yii::$app->homeUrl,
+            'options' => [
+                'class' => 'navbar-inverse navbar-fixed-top',
             ],
-
-            Yii::$app->user->isGuest ?
-                ['label' => 'Login', 'url' => ['/site/login']] :
+        ]
+    );
+    echo Nav::widget(
+        [
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'items' => [
+                ['label' => 'Home', 'url' => ['/site/index']],
+                ['label' => 'Posts', 'url' => ['#']],
+                ['label' => 'Vídeos', 'url' => ['#']],
+                ['label' => 'Sobre', 'url' => ['/site/about']],
+                ['label' => 'Contato', 'url' => ['/site/contact']],
                 [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post']
+                    'label' => 'Administração',
+                    'visible' => !Yii::$app->user->isGuest,
+                    'items' => [
+                        [
+                            'label' => 'Banner',
+                            'url' => ['/banner/index'],
+                        ],
+                        [
+                            'label' => 'Notícia',
+                            'url' => ['/noticia/index'],
+                        ]
+                    ]
                 ],
-        ],
-    ]);
+                Yii::$app->user->isGuest ?
+                    ['label' => 'Login', 'url' => ['/site/login']] :
+                    [
+                        'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                        'url' => ['/site/logout'],
+                        'linkOptions' => ['data-method' => 'post']
+                    ],
+            ],
+        ]
+    );
     NavBar::end();
     ?>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+        <?= Breadcrumbs::widget(
+            [
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]
+        ) ?>
         <?= $content ?>
     </div>
 </div>
