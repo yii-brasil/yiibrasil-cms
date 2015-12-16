@@ -22,6 +22,16 @@ class m130524_201442_init extends Migration
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
+
+        $this->insert('users', [
+            'id' => 1,
+            'nome' => 'admin',
+            'senha' => 'admin',
+            'email' => 'admin@admin.com',
+            'status' => 'ativo',
+            'created_at' => strtotime("now"),
+            'updated_at' => strtotime("now"),
+        ]);
     }
 
     public function down()
