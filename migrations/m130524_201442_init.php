@@ -16,7 +16,7 @@ class m130524_201442_init extends Migration
         $this->createTable('users', [
             'id' => $this->primaryKey(),
             'nome' => $this->string(80)->notNull(),
-            'senha' => $this->string(32)->notNull(),
+            'senha' => $this->string(255)->notNull(),
             'email' => $this->string(150)->notNull(),
             'status' => "ENUM('ativo', 'inativo') NOT NULL DEFAULT 'ativo'",
             'created_at' => $this->integer()->notNull(),
@@ -26,7 +26,7 @@ class m130524_201442_init extends Migration
         $this->insert('users', [
             'id' => 1,
             'nome' => 'admin',
-            'senha' => 'admin',
+            'senha' => '$2y$13$4KU1VSb3NvM2pKNJ.Taq5u0JEZKQmPNL44DA23jDqRJkvUiVulwoW',  //admin
             'email' => 'admin@admin.com',
             'status' => 'ativo',
             'created_at' => strtotime("now"),
