@@ -92,6 +92,10 @@ class Banners extends ActiveRecord
 
     public function deleteBanner($file)
     {
+        if (!file_exists(\Yii::getAlias('@webroot/uploads/img/banners/').$file)) {
+            return false;
+        }
+        
         if (unlink(\Yii::getAlias('@webroot/uploads/img/banners/').$file)) {
             return true;
         } else {

@@ -9,12 +9,13 @@ Cada participante, criará sua parte (definida abaixo) desde CRUD básico até a
 
 Para manter o código organizado e não quebrar o que já está pronto, crie um branch com o nome item que vai criar. Ex. se for criar o item about, nomeie seu banch como about. Só faça o merge após estar tudo funcionando.
 
-  - CRUD Usuários + Sistema de login simples (Almir)
-  - CRUD Banner + Exibição na Home (Cálcio)
-  - CRUD Noticias + Exibição na Home (Armando)
+  - CRUD Usuários + Sistema de login simples (Almir) - Concluído
+  - CRUD Banner + Exibição na Home (Cálcio) - Concluído
+  - CRUD Notícias + Exibição na Home (Armando)
   - CRUD Vídeos + Exibição na Home (Germano)
-  - CRUD About + Página About (Emanuel)
-  - Fale Conosco + Front end (A definir)
+  - CRUD About + Página About (Emanuel) - Concluído
+  - Fale Conosco (A definir)
+  - Modificação do template (Cálcio)
 
 ﻿As migrations já estão criadas, basta baixar o projeto e rodar o comando de migration pela linha de comando. O Banco deve ser criado por você com o nome yiicms.
 
